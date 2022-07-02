@@ -174,7 +174,7 @@ class Game
   end
 
   def announce_draw
-    puts "Game has drawn."
+    puts 'Game has drawn.'
   end
 end
 
