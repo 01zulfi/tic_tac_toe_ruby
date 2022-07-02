@@ -47,6 +47,12 @@ class Board
     end
   end
 
+  def filled?
+    board.all? do |row|
+      row.none? { |element| element.instance_of?(Integer)}
+    end
+  end
+
   private
 
   def create_board
@@ -101,7 +107,7 @@ class Game
   def start
     add_players
     play
-    announce_winner
+    @winner ? announce_winner : announce_draw
   end
 
   private
@@ -118,17 +124,18 @@ class Game
     puts 'Players intialized:'
     puts "#{@player_one.name}: #{@player_one.marker}"
     puts "#{@player_two.name}: #{@player_two.marker}"
+    system('clear')
   end
 
   def play
     until @winner
-      system('clear')
       @board.show
 
       puts "#{@player_one.name}, make your move!"
       play_round(@player_one)
 
       break if @winner
+      break if @board.filled?
 
       @board.show
 
@@ -140,6 +147,7 @@ class Game
   def play_round(player)
     player_move(player)
     @winner = player_won?(player) ? player : nil
+    system('clear')
   end
 
   def player_move(player)
@@ -163,6 +171,10 @@ class Game
 
   def announce_winner
     puts "#{@winner.name} (#{@winner.marker}) Won!!!"
+  end
+
+  def announce_draw
+    puts "Game has drawn."
   end
 end
 
