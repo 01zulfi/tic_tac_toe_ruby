@@ -1,6 +1,8 @@
 # Tic Tac Toe in Ruby
 
-Command line version of Tic Tac Toe written in Ruby.
+A Command line version of Tic Tac Toe written in Ruby.
+
+[Try it out on replit.com](https://replit.com/@01zulfi/tictactoeruby)
 
 ## Classes
 
