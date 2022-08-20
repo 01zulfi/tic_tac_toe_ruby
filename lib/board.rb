@@ -17,7 +17,7 @@ class Board
   def place_marker(marker, position)
     return false unless valid_move(position)
 
-    if position_empy?(position)
+    if position_empty?(position)
       row, column = convert_position_to_coordinate(position)
       board[row][column] = marker
       true
@@ -63,7 +63,7 @@ class Board
     [position / 3, position % 3]
   end
 
-  def position_empy?(position)
+  def position_empty?(position)
     row, column = convert_position_to_coordinate(position)
     board[row][column] == position
   end
